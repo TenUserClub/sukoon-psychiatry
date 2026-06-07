@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import SVGIcon from '@/components/ui/SVGIcon';
 import UpiQrCode from './UpiQrCode';
 import { CLINIC_UPI_ID } from '@/lib/constants';
 
@@ -20,11 +21,24 @@ export default function PaymentStep({ service, onPaymentComplete }) {
     }
   };
 
-  // Free service — no payment needed
+  // Free service - no payment needed
   if (service.fee === 0) {
     return (
       <div className="payment-card" style={{ textAlign: 'center' }}>
-        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🎉</div>
+        <div
+          style={{
+            width: '56px',
+            height: '56px',
+            borderRadius: '50%',
+            background: 'rgba(16, 185, 129, 0.1)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: '0 auto 1rem',
+          }}
+        >
+          <SVGIcon name="check" size={28} style={{ color: '#10B981' }} />
+        </div>
         <h2>No Payment Required</h2>
         <p className="text-muted" style={{ marginBottom: '1.5rem' }}>
           This is a free introductory call. No payment is needed.
@@ -35,7 +49,8 @@ export default function PaymentStep({ service, onPaymentComplete }) {
             onPaymentComplete({ method: 'free', status: 'confirmed' })
           }
         >
-          ✅ Confirm Booking
+          <SVGIcon name="check" size={16} style={{ marginRight: '0.5rem' }} />
+          Confirm Booking
         </button>
       </div>
     );
@@ -43,14 +58,17 @@ export default function PaymentStep({ service, onPaymentComplete }) {
 
   return (
     <div>
-      <h2 style={{ marginBottom: '0.5rem' }}>Payment</h2>
-      <p className="text-muted" style={{ marginBottom: '1.5rem' }}>
+      <h3 style={{ marginBottom: '0.5rem' }}>Payment</h3>
+      <p className="text-muted" style={{ marginBottom: '1.5rem', fontSize: '0.9rem' }}>
         Scan the QR code or use the UPI ID to pay.
       </p>
 
       <div className="payment-card">
         <p className="text-muted">Amount to pay</p>
-        <div className="payment-amount">₹{service.fee.toLocaleString('en-IN')}</div>
+        <div className="payment-amount">
+          <SVGIcon name="rupee" size={20} style={{ marginRight: '0.25rem' }} />
+          {service.fee.toLocaleString('en-IN')}
+        </div>
         <p className="text-sm text-muted">
           for {service.name} ({service.duration_minutes} min)
         </p>
@@ -62,7 +80,11 @@ export default function PaymentStep({ service, onPaymentComplete }) {
         <div className="upi-id-display">
           <span>{upiId}</span>
           <button className="copy-btn" onClick={copyUpiId} title="Copy UPI ID">
-            {copied ? '✅' : '📋'}
+            {copied ? (
+              <SVGIcon name="check" size={16} style={{ color: '#10B981' }} />
+            ) : (
+              <SVGIcon name="clipboard" size={16} />
+            )}
           </button>
         </div>
 
@@ -74,7 +96,9 @@ export default function PaymentStep({ service, onPaymentComplete }) {
               className="input"
               placeholder="Enter 12-digit UTR number"
               value={utr}
-              onChange={(e) => setUtr(e.target.value.replace(/[^a-zA-Z0-9]/g, '').slice(0, 12))}
+              onChange={(e) =>
+                setUtr(e.target.value.replace(/[^a-zA-Z0-9]/g, '').slice(0, 12))
+              }
               maxLength={12}
             />
             <span className="text-sm text-muted">
@@ -95,13 +119,18 @@ export default function PaymentStep({ service, onPaymentComplete }) {
             })
           }
         >
-          I&apos;ve Paid — Submit Booking
+          I&apos;ve Paid - Submit Booking
         </button>
 
         <div className="payment-divider">or</div>
 
-        <button className="btn btn-outline" style={{ width: '100%', opacity: 0.5 }} disabled>
-          💳 Pay with Razorpay — Coming Soon
+        <button
+          className="btn btn-outline"
+          style={{ width: '100%', opacity: 0.5 }}
+          disabled
+        >
+          <SVGIcon name="credit-card" size={16} style={{ marginRight: '0.5rem' }} />
+          Pay with Razorpay - Coming Soon
         </button>
       </div>
     </div>

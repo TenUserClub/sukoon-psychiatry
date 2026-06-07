@@ -5,10 +5,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/#services', label: 'Services' },
+  { href: '/#doctor', label: 'About Dr. Aditi' },
+  { href: '/#testimonials', label: 'Testimonials' },
+  { href: '/#faq', label: 'FAQ' },
 ];
 
 export default function Navbar() {
@@ -16,18 +16,20 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Don't show public navbar on admin pages
-  if (pathname.startsWith('/admin')) return null;
-
+  // Scroll listener
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Close menus on route change
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
+
+  // Don't show public navbar on admin pages
+  if (pathname.startsWith('/admin')) return null;
 
   return (
     <>
@@ -52,9 +54,11 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/book" className="btn btn-primary btn-sm nav-cta">
-              Book Now
-            </Link>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Link href="/book" className="btn btn-primary btn-sm nav-cta">
+                Book Now
+              </Link>
+            </div>
           </div>
 
           <button
@@ -86,7 +90,7 @@ export default function Navbar() {
           <Link
             href="/book"
             className="btn btn-primary"
-            style={{ width: '100%' }}
+            style={{ width: '100%', marginBottom: '1rem' }}
             onClick={() => setMobileOpen(false)}
           >
             Book Now

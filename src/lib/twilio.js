@@ -30,7 +30,7 @@ export async function sendWhatsAppMessage(to, body) {
 
 export async function sendBookingConfirmationWhatsApp(booking) {
   const body = [
-    `✅ Booking Confirmed — ${CLINIC_NAME}`,
+    `✅ Booking Confirmed - ${CLINIC_NAME}`,
     ``,
     `Hi ${booking.patient_name},`,
     `Your appointment with ${DOCTOR_NAME} is booked!`,
@@ -38,13 +38,13 @@ export async function sendBookingConfirmationWhatsApp(booking) {
     `📋 ${booking.service_name}`,
     `📅 ${booking.appointment_date}`,
     `🕐 ${booking.appointment_time}`,
-    `💰 ₹${booking.payment_amount} — ${booking.payment_status === 'paid' ? 'Paid' : 'Pending Verification'}`,
+    `💰 ₹${booking.payment_amount} - ${booking.payment_status === 'paid' ? 'Paid' : 'Pending Verification'}`,
     ``,
     `Booking ID: ${booking.id}`,
     ``,
     `We'll send you the Google Meet link once payment is verified.`,
     ``,
-    `— ${CLINIC_NAME}`,
+    `- ${CLINIC_NAME}`,
   ].join('\n');
 
   return sendWhatsAppMessage(booking.patient_phone, body);
@@ -52,7 +52,7 @@ export async function sendBookingConfirmationWhatsApp(booking) {
 
 export async function sendPaymentVerifiedWhatsApp(booking) {
   const body = [
-    `✅ Payment Verified — ${CLINIC_NAME}`,
+    `✅ Payment Verified - ${CLINIC_NAME}`,
     ``,
     `Hi ${booking.patient_name},`,
     `Your payment of ₹${booking.payment_amount} has been verified!`,
@@ -63,7 +63,7 @@ export async function sendPaymentVerifiedWhatsApp(booking) {
     `📅 ${booking.appointment_date} at ${booking.appointment_time}`,
     ``,
     `See you soon!`,
-    `— ${DOCTOR_NAME}`,
+    `- ${DOCTOR_NAME}`,
   ].join('\n');
 
   return sendWhatsAppMessage(booking.patient_phone, body);

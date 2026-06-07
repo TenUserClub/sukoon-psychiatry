@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 /**
- * Mock bookings data — 8 items with varied statuses
+ * Mock bookings data - 8 items with varied statuses
  */
 const MOCK_BOOKINGS = [
   {

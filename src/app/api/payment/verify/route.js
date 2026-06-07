@@ -12,7 +12,7 @@ export async function POST(request) {
     const body = await request.json();
     const { payment_method } = body;
 
-    // UPI manual payment — UTR submitted, awaiting admin verification
+    // UPI manual payment - UTR submitted, awaiting admin verification
     if (payment_method === 'upi_manual') {
       const { utr_number, booking_id } = body;
 
@@ -51,7 +51,7 @@ export async function POST(request) {
     }
 
     return NextResponse.json(
-      { success: false, error: 'Payment verification failed — invalid signature' },
+      { success: false, error: 'Payment verification failed - invalid signature' },
       { status: 400 }
     );
   } catch {

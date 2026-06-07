@@ -1,14 +1,16 @@
 'use client';
 
+import SVGIcon from '@/components/ui/SVGIcon';
+
 /**
- * Admin Dashboard — Overview page with stats, today's schedule, and recent activity.
+ * Admin Dashboard - Overview page with stats, today's schedule, and recent activity.
  */
 export default function AdminDashboardPage() {
   const stats = [
-    { icon: '📅', label: "Today's Appointments", value: '3' },
-    { icon: '🔔', label: 'Pending Verifications', value: '2' },
-    { icon: '📊', label: 'This Week', value: '12' },
-    { icon: '💰', label: 'Monthly Revenue', value: '₹15,000' },
+    { icon: 'calendar', label: "Today's Appointments", value: '3' },
+    { icon: 'bell', label: 'Pending Verifications', value: '2' },
+    { icon: 'bar-chart', label: 'This Week', value: '12' },
+    { icon: 'rupee', label: 'Monthly Revenue', value: '₹15,000' },
   ];
 
   const todaySchedule = [
@@ -33,11 +35,11 @@ export default function AdminDashboardPage() {
   ];
 
   const recentActivity = [
-    { icon: '✅', text: 'Payment verified for Rahul Sharma (BK-10234)', time: '2 hours ago' },
-    { icon: '📅', text: 'New booking by Kavita Nair — Free Intro Call', time: '3 hours ago' },
-    { icon: '❌', text: 'Booking cancelled by Arjun Reddy (BK-10240)', time: '5 hours ago' },
-    { icon: '💰', text: 'Refund processed for Arjun Reddy — ₹1,000', time: '5 hours ago' },
-    { icon: '📋', text: 'Session completed for Meera Joshi — Follow-up notes added', time: '1 day ago' },
+    { icon: 'check', text: 'Payment verified for Rahul Sharma (BK-10234)', time: '2 hours ago' },
+    { icon: 'calendar', text: 'New booking by Kavita Nair - Free Intro Call', time: '3 hours ago' },
+    { icon: 'alert-circle', text: 'Booking cancelled by Arjun Reddy (BK-10240)', time: '5 hours ago' },
+    { icon: 'rupee', text: 'Refund processed for Arjun Reddy - ₹1,000', time: '5 hours ago' },
+    { icon: 'clipboard', text: 'Session completed for Meera Joshi - Follow-up notes added', time: '1 day ago' },
   ];
 
   const statusBadge = (status) => {
@@ -53,13 +55,15 @@ export default function AdminDashboardPage() {
 
   return (
     <div>
-      <h1 className="admin-page-title">Welcome back, Dr. Bhatia 👋</h1>
+      <h1 className="admin-page-title">Welcome back, Dr. Bhatia</h1>
 
       {/* Stats Grid */}
       <div className="stats-grid">
         {stats.map((stat) => (
           <div key={stat.label} className="stat-card">
-            <div className="stat-icon">{stat.icon}</div>
+            <div className="stat-icon">
+              <SVGIcon name={stat.icon} size={22} style={{ color: 'var(--primary)' }} />
+            </div>
             <div>
               <div className="stat-value">{stat.value}</div>
               <div className="stat-label">{stat.label}</div>
@@ -132,7 +136,9 @@ export default function AdminDashboardPage() {
                     : 'none',
               }}
             >
-              <span style={{ fontSize: '1.25rem', flexShrink: 0 }}>{item.icon}</span>
+              <span style={{ flexShrink: 0, color: 'var(--primary)' }}>
+                <SVGIcon name={item.icon} size={18} />
+              </span>
               <div style={{ flex: 1 }}>
                 <div style={{ fontSize: '0.9rem' }}>{item.text}</div>
               </div>

@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import ScrollReveal from '@/components/ui/ScrollReveal';
+import SVGIcon from '@/components/ui/SVGIcon';
 
 const faqData = [
   {
@@ -36,8 +38,9 @@ const faqData = [
 ];
 
 /**
- * FAQ accordion — expands/collapses answers on click.
+ * FAQ accordion - expands/collapses answers on click.
  * Only one answer is open at a time; clicking the open item closes it.
+ * Uses SVGIcon chevron-down that rotates 180deg when open.
  */
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -47,7 +50,7 @@ export default function FAQ() {
   };
 
   return (
-    <>
+    <ScrollReveal>
       <h2 className="section-title">Frequently Asked Questions</h2>
       <p className="section-subtitle">
         Have questions? We have answers. If you don&apos;t find what you&apos;re
@@ -66,7 +69,16 @@ export default function FAQ() {
               aria-expanded={openIndex === index}
             >
               <span>{item.question}</span>
-              <span className="faq-icon">+</span>
+              <span
+                className="faq-icon"
+                style={{
+                  display: 'inline-flex',
+                  transition: 'transform 0.3s ease',
+                  transform: openIndex === index ? 'rotate(180deg)' : 'rotate(0deg)',
+                }}
+              >
+                <SVGIcon name="chevron-down" size={20} />
+              </span>
             </button>
             <div className="faq-answer">
               <p>{item.answer}</p>
@@ -74,6 +86,6 @@ export default function FAQ() {
           </div>
         ))}
       </div>
-    </>
+    </ScrollReveal>
   );
 }

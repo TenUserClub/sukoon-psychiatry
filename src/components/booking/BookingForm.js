@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import SVGIcon from '@/components/ui/SVGIcon';
 
-export default function BookingForm({ details, onChange }) {
+export default function BookingForm({ details, onChange, showMore, onToggleMore }) {
   const [errors, setErrors] = useState({});
 
   const validatePhone = (phone) => {
@@ -12,7 +13,6 @@ export default function BookingForm({ details, onChange }) {
 
   const handleChange = (field, value) => {
     onChange(field, value);
-    // Clear error on change
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: '' }));
     }
@@ -33,12 +33,13 @@ export default function BookingForm({ details, onChange }) {
 
   return (
     <div>
-      <h2 style={{ marginBottom: '0.5rem' }}>Your Details</h2>
-      <p className="text-muted" style={{ marginBottom: '1.5rem' }}>
-        Tell us a bit about yourself so we can prepare for your session.
+      <h3 style={{ marginBottom: '0.5rem' }}>Your Details</h3>
+      <p className="text-muted" style={{ marginBottom: '1.25rem', fontSize: '0.9rem' }}>
+        This information helps Dr.&nbsp;Bhatia prepare for your session.
       </p>
 
       <div className="flex-col gap-3">
+        {/* Name - required */}
         <div className="input-group">
           <label>Full Name *</label>
           <input
@@ -52,12 +53,13 @@ export default function BookingForm({ details, onChange }) {
           {errors.name && <span className="error-text">{errors.name}</span>}
         </div>
 
+        {/* Phone - required */}
         <div className="input-group">
           <label>Phone Number *</label>
           <input
             type="tel"
             className={`input ${errors.phone ? 'input-error' : ''}`}
-            placeholder="+91 XXXXXXXXXX"
+            placeholder="98XXXXXXXX"
             value={details.phone || ''}
             onChange={(e) => handleChange('phone', e.target.value)}
             onBlur={() => handleBlur('phone')}
@@ -65,53 +67,77 @@ export default function BookingForm({ details, onChange }) {
           {errors.phone && <span className="error-text">{errors.phone}</span>}
         </div>
 
-        <div className="input-group">
-          <label>Email (optional but recommended)</label>
-          <input
-            type="email"
-            className="input"
-            placeholder="your@email.com"
-            value={details.email || ''}
-            onChange={(e) => handleChange('email', e.target.value)}
-          />
-        </div>
+        {/* Toggle for optional fields */}
+        <button
+          type="button"
+          className="btn btn-ghost"
+          onClick={onToggleMore}
+          style={{
+            alignSelf: 'flex-start',
+            fontSize: '0.85rem',
+            padding: '0.4rem 0.75rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+          }}
+        >
+          <SVGIcon name={showMore ? 'chevron-down' : 'chevron-right'} size={14} />
+          {showMore ? 'Hide extra details' : 'Add more details (optional)'}
+        </button>
 
-        <div className="input-group">
-          <label>Age (optional)</label>
-          <input
-            type="number"
-            className="input"
-            placeholder="e.g. 30"
-            min="1"
-            max="120"
-            value={details.age || ''}
-            onChange={(e) => handleChange('age', e.target.value)}
-            style={{ maxWidth: '150px' }}
-          />
-        </div>
+        {showMore && (
+          <>
+            {/* Email */}
+            <div className="input-group">
+              <label>Email</label>
+              <input
+                type="email"
+                className="input"
+                placeholder="your@email.com"
+                value={details.email || ''}
+                onChange={(e) => handleChange('email', e.target.value)}
+              />
+            </div>
 
-        <div className="input-group">
-          <label>
-            What brings you here? (optional)
-          </label>
-          <textarea
-            className="textarea"
-            placeholder="Brief description of your concern..."
-            maxLength={500}
-            rows={4}
-            value={details.concern || ''}
-            onChange={(e) => handleChange('concern', e.target.value)}
-          />
-          <span className="text-sm text-muted" style={{ textAlign: 'right' }}>
-            {(details.concern || '').length}/500
-          </span>
-        </div>
+            {/* Age */}
+            <div className="input-group">
+              <label>Age</label>
+              <input
+                type="number"
+                className="input"
+                placeholder="e.g. 30"
+                min="1"
+                max="120"
+                value={details.age || ''}
+                onChange={(e) => handleChange('age', e.target.value)}
+                style={{ maxWidth: '150px' }}
+              />
+            </div>
+
+            {/* Concern */}
+            <div className="input-group">
+              <label>What brings you here?</label>
+              <textarea
+                className="textarea"
+                placeholder="Brief description of your concern..."
+                maxLength={500}
+                rows={3}
+                value={details.concern || ''}
+                onChange={(e) => handleChange('concern', e.target.value)}
+              />
+              <span className="text-sm text-muted" style={{ textAlign: 'right' }}>
+                {(details.concern || '').length}/500
+              </span>
+            </div>
+          </>
+        )}
       </div>
 
+      {/* Privacy note */}
       <div
         style={{
-          marginTop: '1.5rem',
-          padding: '1rem',
+          marginTop: '1.25rem',
+          padding: '0.75rem 1rem',
           background: 'rgba(var(--primary-rgb), 0.05)',
           borderRadius: 'var(--radius)',
           display: 'flex',
@@ -119,7 +145,7 @@ export default function BookingForm({ details, onChange }) {
           gap: '0.5rem',
         }}
       >
-        <span>🔒</span>
+        <SVGIcon name="shield" size={16} style={{ color: 'var(--primary)', flexShrink: 0 }} />
         <span className="text-sm text-muted">
           Your information is kept strictly confidential and protected under medical ethics guidelines.
         </span>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import SVGIcon from '@/components/ui/SVGIcon';
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -28,7 +29,9 @@ export default function AdminLoginPage() {
   return (
     <div className="login-page">
       <div className="login-card">
-        <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🧠</div>
+        <div style={{ marginBottom: '0.75rem', color: 'var(--primary)' }}>
+          <SVGIcon name="brain" size={48} />
+        </div>
         <h1>Admin Login</h1>
         <p className="text-muted">Sign in to access the Sukoon Psychiatry admin dashboard</p>
 

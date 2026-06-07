@@ -7,7 +7,7 @@ import TestimonialCard from '@/components/landing/TestimonialCard';
 import FAQ from '@/components/landing/FAQ';
 
 /**
- * Landing page — assembles all sections into the main marketing page.
+ * Landing page - assembles all sections into the main marketing page.
  * This is a server component; interactive parts (Hero, Testimonials, FAQ)
  * are isolated client components.
  */
@@ -50,7 +50,7 @@ export default function Home() {
       </section>
 
       {/* Bottom CTA strip */}
-      <div className="cta-strip">
+      <div id="contact" className="cta-strip">
         <div className="container">
           <h2>Ready to take the first step?</h2>
           <p>
@@ -58,7 +58,7 @@ export default function Home() {
             towards better mental health today.
           </p>
           <Link href="/book" className="btn btn-lg">
-            Book Your Session →
+            Book Your Session
           </Link>
         </div>
       </div>

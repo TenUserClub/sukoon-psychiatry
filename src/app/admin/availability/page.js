@@ -48,7 +48,7 @@ export default function AdminAvailabilityPage() {
   const [grid, setGrid] = useState(buildInitialGrid);
   const [slotDuration, setSlotDuration] = useState(30);
   const [blockedDates, setBlockedDates] = useState([
-    { date: '2024-01-26', reason: 'Republic Day — National Holiday' },
+    { date: '2024-01-26', reason: 'Republic Day - National Holiday' },
   ]);
   const [blockDate, setBlockDate] = useState('');
   const [blockReason, setBlockReason] = useState('');
@@ -180,7 +180,7 @@ export default function AdminAvailabilityPage() {
                           cursor: 'pointer',
                           transition: 'all var(--transition-fast)',
                         }}
-                        title={`${day} ${slot.label} — ${isActive ? 'Available' : 'Unavailable'}`}
+                        title={`${day} ${slot.label} - ${isActive ? 'Available' : 'Unavailable'}`}
                         aria-label={`${day} ${slot.label} ${isActive ? 'Available' : 'Unavailable'}`}
                       />
                     </td>
@@ -286,7 +286,7 @@ export default function AdminAvailabilityPage() {
 
       {/* Save Button */}
       <button className="btn btn-primary" onClick={handleSave}>
-        {saved ? '✓ Saved Successfully' : 'Save Changes'}
+        {saved ? 'Saved Successfully' : 'Save Changes'}
       </button>
     </div>
   );

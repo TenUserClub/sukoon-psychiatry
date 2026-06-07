@@ -3,7 +3,7 @@ export const CLINIC_TAGLINE = 'Peace of mind, one session at a time';
 export const CLINIC_PHONE = process.env.NEXT_PUBLIC_CLINIC_PHONE || 'PLACEHOLDER_NUMBER';
 export const CLINIC_EMAIL = process.env.NEXT_PUBLIC_CLINIC_EMAIL || 'contact@sukoonpsychiatry.in';
 export const CLINIC_WHATSAPP = process.env.NEXT_PUBLIC_CLINIC_WHATSAPP || 'PLACEHOLDER_NUMBER';
-export const CLINIC_UPI_ID = process.env.NEXT_PUBLIC_CLINIC_UPI_ID || 'PLACEHOLDER_UPI_ID';
+export const CLINIC_UPI_ID = process.env.NEXT_PUBLIC_CLINIC_UPI_ID || 'aditibhatia926@oksbi';
 export const CLINIC_ADDRESS = 'RML Hospital, Lucknow, Uttar Pradesh, India';
 
 export const DOCTOR_NAME = 'Dr. Aditi Bhatia';
@@ -48,7 +48,7 @@ export const DEFAULT_SERVICES = [
     fee: 0,
     sort_order: 0,
     is_active: true,
-    icon: '👋',
+    icon: 'users',
   },
   {
     id: 'srv-initial',
@@ -58,7 +58,7 @@ export const DEFAULT_SERVICES = [
     fee: 1000,
     sort_order: 1,
     is_active: true,
-    icon: '🩺',
+    icon: 'stethoscope',
   },
   {
     id: 'srv-followup',
@@ -68,7 +68,7 @@ export const DEFAULT_SERVICES = [
     fee: 500,
     sort_order: 2,
     is_active: true,
-    icon: '📋',
+    icon: 'clipboard',
   },
   {
     id: 'srv-medication',
@@ -78,7 +78,7 @@ export const DEFAULT_SERVICES = [
     fee: 400,
     sort_order: 3,
     is_active: true,
-    icon: '💊',
+    icon: 'pill',
   },
   {
     id: 'srv-extended',
@@ -88,6 +88,6 @@ export const DEFAULT_SERVICES = [
     fee: 1500,
     sort_order: 4,
     is_active: true,
-    icon: '🧠',
+    icon: 'brain',
   },
 ];

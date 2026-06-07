@@ -37,7 +37,7 @@ export default function UpiQrCode({ upiId, amount }) {
         <p className="text-muted">Failed to generate QR code</p>
       )}
       <p className="text-sm text-muted" style={{ marginTop: '0.75rem', textAlign: 'center' }}>
-        Scan with any UPI app — GPay, PhonePe, Paytm
+        Scan with any UPI app - GPay, PhonePe, Paytm
       </p>
     </div>
   );

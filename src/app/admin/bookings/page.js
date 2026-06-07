@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 /**
- * Mock booking data — 8 rows with mixed statuses, matching the API route's mock data.
+ * Mock booking data - 8 rows with mixed statuses, matching the API route's mock data.
  */
 const initialBookings = [
   {
@@ -281,7 +281,7 @@ export default function AdminBookingsPage() {
                           onClick={() => handleVerify(b.id)}
                           title="Verify Payment"
                         >
-                          ✅ Verify
+                          Verify
                         </button>
                       )}
                       {(b.status === 'confirmed' || b.status === 'pending') &&
@@ -291,7 +291,7 @@ export default function AdminBookingsPage() {
                             onClick={() => handleComplete(b.id)}
                             title="Mark Complete"
                           >
-                            ✔️ Complete
+                            Complete
                           </button>
                         )}
                       <button
@@ -299,7 +299,7 @@ export default function AdminBookingsPage() {
                         onClick={() => handleNotes(b.id)}
                         title="Add Notes"
                       >
-                        📝 Notes
+                        Notes
                       </button>
                       {b.status !== 'cancelled' && b.status !== 'completed' && (
                         <button
@@ -307,7 +307,7 @@ export default function AdminBookingsPage() {
                           onClick={() => handleCancel(b.id)}
                           title="Cancel Booking"
                         >
-                          ❌ Cancel
+                          Cancel
                         </button>
                       )}
                     </div>

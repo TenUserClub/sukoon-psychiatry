@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ThemeProvider from '@/components/ThemeProvider';
+import AmbientPlayer from '@/components/ui/AmbientPlayer';
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -29,7 +30,7 @@ const lora = Lora({
 
 export const metadata = {
   title: {
-    default: 'Sukoon Psychiatry — Online Psychiatry Consultation with Dr. Aditi Bhatia',
+    default: 'Sukoon Psychiatry - Online Psychiatry Consultation with Dr. Aditi Bhatia',
     template: '%s | Sukoon Psychiatry',
   },
   description:
@@ -42,7 +43,7 @@ export const metadata = {
   authors: [{ name: 'Sukoon Psychiatry' }],
   robots: 'index, follow',
   openGraph: {
-    title: 'Sukoon Psychiatry — Online Psychiatry Consultation',
+    title: 'Sukoon Psychiatry - Online Psychiatry Consultation',
     description: 'Expert psychiatric care with Dr. Aditi Bhatia. Book your session today.',
     type: 'website',
     locale: 'en_IN',
@@ -98,6 +99,7 @@ export default function RootLayout({ children }) {
           <main>{children}</main>
           <Footer />
           <ThemeSwitcher />
+          <AmbientPlayer />
         </ThemeProvider>
       </body>
     </html>

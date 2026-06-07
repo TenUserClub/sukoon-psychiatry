@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import AdminSidebar from '@/components/layout/AdminSidebar';
 
 /**
- * Admin layout — wraps all /admin/* pages with sidebar navigation.
+ * Admin layout - wraps all /admin/* pages with sidebar navigation.
  * Checks localStorage for auth; redirects to /admin/login if unauthenticated.
  * The public Navbar/Footer already hide themselves on /admin/* routes.
  */
@@ -20,7 +20,7 @@ export default function AdminLayout({ children }) {
 
     // Allow the login page to render without auth
     if (pathname === '/admin/login') {
-      setAuthed(true); // Let it through — the login page is public
+      setAuthed(true); // Let it through - the login page is public
       setChecking(false);
       return;
     }

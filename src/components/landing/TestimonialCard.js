@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 const testimonials = [
   {
@@ -18,15 +19,25 @@ const testimonials = [
 ];
 
 /**
- * TestimonialCard — auto-rotates through patient testimonials every 5 seconds.
- * Users can also click dot indicators to jump to a specific testimonial.
+ * TestimonialCard - auto-rotates through patient testimonials every 5 seconds.
+ * Smooth CSS transitions on opacity + transform between testimonials.
+ * Uses a styled CSS quotation mark instead of emoji.
  */
 export default function TestimonialCard() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const goToIndex = useCallback((index) => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveIndex(index);
+      setIsTransitioning(false);
+    }, 300);
+  }, []);
 
   const goToNext = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % testimonials.length);
-  }, []);
+    goToIndex((activeIndex + 1) % testimonials.length);
+  }, [activeIndex, goToIndex]);
 
   // Auto-rotate every 5 seconds
   useEffect(() => {
@@ -37,23 +48,45 @@ export default function TestimonialCard() {
   const active = testimonials[activeIndex];
 
   return (
-    <div className="testimonials-container">
-      <div className="testimonial-card animate-fade-in" key={activeIndex}>
-        <div className="testimonial-quote">&ldquo;</div>
-        <p className="testimonial-text">{active.text}</p>
-        <p className="testimonial-author">— {active.author}</p>
-      </div>
+    <ScrollReveal>
+      <div className="testimonials-container">
+        <div
+          className="testimonial-card"
+          style={{
+            opacity: isTransitioning ? 0 : 1,
+            transform: isTransitioning ? 'translateY(10px)' : 'translateY(0)',
+            transition: 'opacity 0.3s ease, transform 0.3s ease',
+          }}
+        >
+          <div
+            className="testimonial-quote"
+            aria-hidden="true"
+            style={{
+              fontFamily: 'Georgia, serif',
+              fontSize: '3rem',
+              color: 'var(--primary-light)',
+              lineHeight: 1,
+              marginBottom: '0.5rem',
+              userSelect: 'none',
+            }}
+          >
+            &ldquo;
+          </div>
+          <p className="testimonial-text">{active.text}</p>
+          <p className="testimonial-author">&mdash; {active.author}</p>
+        </div>
 
-      <div className="testimonial-dots">
-        {testimonials.map((_, index) => (
-          <button
-            key={index}
-            className={`testimonial-dot${index === activeIndex ? ' active' : ''}`}
-            onClick={() => setActiveIndex(index)}
-            aria-label={`Go to testimonial ${index + 1}`}
-          />
-        ))}
+        <div className="testimonial-dots">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              className={`testimonial-dot${index === activeIndex ? ' active' : ''}`}
+              onClick={() => goToIndex(index)}
+              aria-label={`Go to testimonial ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </ScrollReveal>
   );
 }

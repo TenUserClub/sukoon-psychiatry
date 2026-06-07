@@ -18,7 +18,7 @@ export async function sendBookingConfirmation(booking) {
     await resend.emails.send({
       from: `${CLINIC_NAME} <${fromEmail}>`,
       to: booking.patient_email,
-      subject: `Booking Confirmed — ${CLINIC_NAME}`,
+      subject: `Booking Confirmed - ${CLINIC_NAME}`,
       html: `
         <div style="font-family:sans-serif;max-width:500px;margin:0 auto;padding:24px;">
           <h2 style="color:#4A7C6F;">✅ Booking Confirmed</h2>
@@ -31,7 +31,7 @@ export async function sendBookingConfirmation(booking) {
             <tr><td style="padding:8px 0;color:#666;">💰 Amount</td><td style="padding:8px 0;font-weight:600;">₹${booking.payment_amount}</td></tr>
           </table>
           <p style="color:#666;font-size:14px;">We'll send you the Google Meet link once payment is verified.</p>
-          <p style="margin-top:24px;">— ${CLINIC_NAME}</p>
+          <p style="margin-top:24px;">- ${CLINIC_NAME}</p>
         </div>
       `,
     });
@@ -49,7 +49,7 @@ export async function sendPaymentVerified(booking) {
     await resend.emails.send({
       from: `${CLINIC_NAME} <${fromEmail}>`,
       to: booking.patient_email,
-      subject: `Payment Verified — ${CLINIC_NAME}`,
+      subject: `Payment Verified - ${CLINIC_NAME}`,
       html: `
         <div style="font-family:sans-serif;max-width:500px;margin:0 auto;padding:24px;">
           <h2 style="color:#4A7C6F;">✅ Payment Verified</h2>
@@ -57,7 +57,7 @@ export async function sendPaymentVerified(booking) {
           <p>Your payment of ₹${booking.payment_amount} has been verified!</p>
           ${booking.meeting_link ? `<p>📹 <strong>Join your session:</strong> <a href="${booking.meeting_link}">${booking.meeting_link}</a></p>` : ''}
           <p>📅 ${booking.appointment_date} at ${booking.appointment_time}</p>
-          <p style="margin-top:24px;">See you soon!<br/>— ${DOCTOR_NAME}</p>
+          <p style="margin-top:24px;">See you soon!<br/>- ${DOCTOR_NAME}</p>
         </div>
       `,
     });
@@ -74,7 +74,7 @@ export async function sendBookingReminder(booking) {
     await resend.emails.send({
       from: `${CLINIC_NAME} <${fromEmail}>`,
       to: booking.patient_email,
-      subject: `Reminder: Appointment in 1 hour — ${CLINIC_NAME}`,
+      subject: `Reminder: Appointment in 1 hour - ${CLINIC_NAME}`,
       html: `
         <div style="font-family:sans-serif;max-width:500px;margin:0 auto;padding:24px;">
           <h2 style="color:#4A7C6F;">⏰ Appointment Reminder</h2>
@@ -82,7 +82,7 @@ export async function sendBookingReminder(booking) {
           <p>Your appointment with ${DOCTOR_NAME} is in 1 hour.</p>
           ${booking.meeting_link ? `<p>📹 <a href="${booking.meeting_link}">Join Google Meet</a></p>` : ''}
           <p>🕐 ${booking.appointment_time}</p>
-          <p style="margin-top:24px;">— ${CLINIC_NAME}</p>
+          <p style="margin-top:24px;">- ${CLINIC_NAME}</p>
         </div>
       `,
     });

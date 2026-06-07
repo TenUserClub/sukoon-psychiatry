@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import SVGIcon from '@/components/ui/SVGIcon';
 import { DEFAULT_SERVICES } from '@/lib/constants';
 
 export default function AdminServicesPage() {
@@ -11,7 +12,7 @@ export default function AdminServicesPage() {
   const [editData, setEditData] = useState({});
   const [showNew, setShowNew] = useState(false);
   const [newService, setNewService] = useState({
-    name: '', description: '', duration_minutes: 30, fee: 0, icon: '🩺', is_active: true,
+    name: '', description: '', duration_minutes: 30, fee: 0, icon: 'stethoscope', is_active: true,
   });
 
   const startEdit = (service) => {
@@ -32,7 +33,7 @@ export default function AdminServicesPage() {
       ...prev,
       { ...newService, id, sort_order: prev.length },
     ]);
-    setNewService({ name: '', description: '', duration_minutes: 30, fee: 0, icon: '🩺', is_active: true });
+    setNewService({ name: '', description: '', duration_minutes: 30, fee: 0, icon: 'stethoscope', is_active: true });
     setShowNew(false);
   };
 
@@ -49,7 +50,7 @@ export default function AdminServicesPage() {
           Manage Services
         </h1>
         <button className="btn btn-primary" onClick={() => setShowNew(!showNew)}>
-          {showNew ? '✕ Cancel' : '+ Add Service'}
+          {showNew ? 'Cancel' : '+ Add Service'}
         </button>
       </div>
 
@@ -58,7 +59,7 @@ export default function AdminServicesPage() {
           <h3 style={{ marginBottom: '1rem' }}>New Service</h3>
           <div className="grid-2 gap-2" style={{ marginBottom: '1rem' }}>
             <div className="input-group">
-              <label>Icon (emoji)</label>
+              <label>Icon (name)</label>
               <input className="input" value={newService.icon}
                 onChange={(e) => setNewService({ ...newService, icon: e.target.value })}
                 style={{ maxWidth: 80 }} />
@@ -132,7 +133,7 @@ export default function AdminServicesPage() {
               <>
                 <div className="flex-between" style={{ marginBottom: '0.75rem' }}>
                   <div className="flex items-center gap-2">
-                    <span style={{ fontSize: '1.5rem' }}>{service.icon}</span>
+                    <span style={{ fontSize: '1.5rem' }}><SVGIcon name={service.icon} size={24} /></span>
                     <h3 style={{ fontSize: '1.1rem' }}>{service.name}</h3>
                   </div>
                   <span className={`badge ${service.is_active ? 'badge-success' : 'badge-default'}`}>
@@ -143,15 +144,15 @@ export default function AdminServicesPage() {
                   {service.description}
                 </p>
                 <div className="flex-between text-sm" style={{ marginBottom: '1rem' }}>
-                  <span>🕐 {service.duration_minutes} min</span>
+                  <span><SVGIcon name="clock" size={14} /> {service.duration_minutes} min</span>
                   <span className="font-bold" style={{ color: 'var(--primary)' }}>
                     {service.fee === 0 ? 'Free' : `₹${service.fee}`}
                   </span>
                 </div>
                 <div className="flex gap-2">
-                  <button className="action-btn" onClick={() => startEdit(service)}>✏️ Edit</button>
+                  <button className="action-btn" onClick={() => startEdit(service)}>Edit</button>
                   <button className="action-btn" onClick={() => toggleActive(service.id)}>
-                    {service.is_active ? '⏸️ Deactivate' : '▶️ Activate'}
+                    {service.is_active ? 'Deactivate' : 'Activate'}
                   </button>
                 </div>
               </>

@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import SVGIcon from '@/components/ui/SVGIcon';
 
 const navLinks = [
-  { href: '/admin', label: 'Dashboard', icon: '📊' },
-  { href: '/admin/bookings', label: 'Bookings', icon: '📅' },
-  { href: '/admin/availability', label: 'Availability', icon: '🕐' },
-  { href: '/admin/services', label: 'Services', icon: '🏥' },
-  { href: '/admin/messages', label: 'Messages', icon: '💬' },
+  { href: '/admin', label: 'Dashboard', icon: 'bar-chart' },
+  { href: '/admin/bookings', label: 'Bookings', icon: 'calendar' },
+  { href: '/admin/availability', label: 'Availability', icon: 'clock' },
+  { href: '/admin/services', label: 'Services', icon: 'stethoscope' },
+  { href: '/admin/messages', label: 'Messages', icon: 'message' },
 ];
 
 export default function AdminSidebar() {
@@ -23,12 +24,12 @@ export default function AdminSidebar() {
   return (
     <aside className="admin-sidebar">
       <div className="admin-sidebar-logo">
-        🧠 Sukoon <span>Admin</span>
+        <SVGIcon name="brain" size={22} style={{ color: 'var(--primary-light)' }} />
+        {' '}Sukoon <span>Admin</span>
       </div>
 
       <nav>
         {navLinks.map((link) => {
-          // Exact match for /admin, startsWith for sub-routes
           const isActive =
             link.href === '/admin'
               ? pathname === '/admin'
@@ -40,7 +41,7 @@ export default function AdminSidebar() {
               href={link.href}
               className={`admin-nav-link ${isActive ? 'active' : ''}`}
             >
-              <span>{link.icon}</span>
+              <SVGIcon name={link.icon} size={18} />
               {link.label}
             </Link>
           );
@@ -55,12 +56,12 @@ export default function AdminSidebar() {
         rel="noopener noreferrer"
         className="admin-nav-link"
       >
-        <span>🌐</span>
+        <SVGIcon name="globe" size={18} />
         View Website
       </a>
 
       <button className="admin-nav-link" onClick={handleLogout} style={{ width: '100%' }}>
-        <span>🚪</span>
+        <SVGIcon name="log-out" size={18} />
         Logout
       </button>
     </aside>

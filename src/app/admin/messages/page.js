@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import SVGIcon from '@/components/ui/SVGIcon';
 
 const INITIAL_MESSAGES = [
   {
@@ -101,7 +102,7 @@ export default function AdminMessagesPage() {
 
       {filtered.length === 0 ? (
         <div className="card text-center" style={{ padding: '3rem' }}>
-          <p style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📭</p>
+          <div style={{ marginBottom: '0.5rem' }}><SVGIcon name="message" size={32} style={{ color: 'var(--text-muted)' }} /></div>
           <p className="text-muted">No messages to show.</p>
         </div>
       ) : (
@@ -133,8 +134,8 @@ export default function AdminMessagesPage() {
               </div>
 
               <div className="flex gap-3 text-sm text-muted" style={{ marginBottom: '0.5rem' }}>
-                {msg.email && <span>📧 {msg.email}</span>}
-                <span>📞 {msg.phone}</span>
+                {msg.email && <span><SVGIcon name="mail" size={14} /> {msg.email}</span>}
+                <span><SVGIcon name="phone" size={14} /> {msg.phone}</span>
               </div>
 
               <p
@@ -160,7 +161,7 @@ export default function AdminMessagesPage() {
                       className="btn btn-ghost btn-sm"
                       onClick={() => markAsRead(msg.id)}
                     >
-                      ✅ Mark as Read
+                      Mark as Read
                     </button>
                   )}
                   <a
@@ -170,14 +171,14 @@ export default function AdminMessagesPage() {
                     className="whatsapp-btn"
                     style={{ fontSize: '0.85rem', padding: '0.4rem 0.85rem' }}
                   >
-                    💬 Reply via WhatsApp
+                    Reply via WhatsApp
                   </a>
                   {msg.email && (
                     <a
                       href={`mailto:${msg.email}`}
                       className="btn btn-outline btn-sm"
                     >
-                      📧 Email
+                      Email
                     </a>
                   )}
                 </div>
