@@ -1556,6 +1556,15 @@ a:hover { color: var(--primary); }
   animation: scaleIn 0.2s ease;
   z-index: 120;
 }
+/* Invisible bridge to prevent hover loss when moving mouse to popup */
+.ambient-controls-popup::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 24px;
+}
 .volume-slider-container {
   width: 100%;
 }
