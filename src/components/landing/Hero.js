@@ -41,7 +41,7 @@ export default function Hero() {
               <SVGIcon name="star" size={16} /> 8+ Years
             </span>
             <span className="hero-badge">
-              <SVGIcon name="map-pin" size={16} /> Lucknow, India
+              <SVGIcon name="map-pin" size={16} /> India
             </span>
             <span className="hero-badge">
               <SVGIcon name="globe" size={16} /> English &amp; Hindi

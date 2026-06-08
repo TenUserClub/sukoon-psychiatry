@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { DOCTOR_NAME, DOCTOR_BIO } from '@/lib/constants';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import SVGIcon from '@/components/ui/SVGIcon';
@@ -31,32 +32,25 @@ export default function DoctorProfile() {
                   }}
                   aria-hidden="true"
                 />
-                {/* Main avatar circle */}
+                {/* Main avatar image */}
                 <div
                   style={{
-                    width: 280,
-                    height: 280,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, var(--primary), var(--primary-light))',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    width: 320,
+                    height: 400,
+                    borderRadius: '1.5rem',
+                    overflow: 'hidden',
+                    position: 'relative',
                     boxShadow: '0 12px 40px rgba(var(--primary-rgb), 0.25)',
                   }}
                   aria-hidden="true"
                 >
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-heading)',
-                      fontWeight: 700,
-                      fontSize: '4.5rem',
-                      color: 'white',
-                      lineHeight: 1,
-                      userSelect: 'none',
-                    }}
-                  >
-                    AB
-                  </span>
+                  <Image 
+                    src="/dr-aditi.jpg" 
+                    alt="Dr. Aditi Bhatia" 
+                    fill 
+                    style={{ objectFit: 'cover' }} 
+                    priority
+                  />
                 </div>
               </div>
             </div>
