@@ -10,7 +10,7 @@ import SVGIcon from '@/components/ui/SVGIcon';
  * on the left and credentials + bio on the right. Uses ScrollReveal directional animations.
  */
 export default function DoctorProfile() {
-  const credentials = ['MBBS', 'MD-Psychiatry', '8+ Years', 'RML Lucknow'];
+  const credentials = ['MBBS', 'MD-Psychiatry', '8+ Years'];
 
   return (
     <section className="section">

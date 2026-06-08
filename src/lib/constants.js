@@ -4,12 +4,12 @@ export const CLINIC_PHONE = process.env.NEXT_PUBLIC_CLINIC_PHONE || 'PLACEHOLDER
 export const CLINIC_EMAIL = process.env.NEXT_PUBLIC_CLINIC_EMAIL || 'contact@sukoonpsychiatry.in';
 export const CLINIC_WHATSAPP = process.env.NEXT_PUBLIC_CLINIC_WHATSAPP || 'PLACEHOLDER_NUMBER';
 export const CLINIC_UPI_ID = process.env.NEXT_PUBLIC_CLINIC_UPI_ID || 'aditibhatia926@oksbi';
-export const CLINIC_ADDRESS = 'RML Hospital, Lucknow, Uttar Pradesh, India';
+export const CLINIC_ADDRESS = 'Lucknow, Uttar Pradesh, India';
 
 export const DOCTOR_NAME = 'Dr. Aditi Bhatia';
 export const DOCTOR_QUALIFICATIONS = 'MBBS, MD - Psychiatry';
 export const DOCTOR_EXPERIENCE = '8+ years';
-export const DOCTOR_BIO = 'Dr. Aditi Bhatia is an expert and experienced psychiatrist with over 8 years of clinical practice. Specializing in Psychiatry, she is currently based at RML, Lucknow. Dr. Bhatia is fluent in English and Hindi, and provides compassionate, evidence-based care in a comfortable and holistic environment, ensuring complete recovery for every patient.';
+export const DOCTOR_BIO = 'Dr. Aditi Bhatia is an expert and experienced psychiatrist with over 8 years of clinical practice. Specializing in Psychiatry, Dr. Bhatia is fluent in English and Hindi, and provides compassionate, evidence-based care in a comfortable and holistic environment, ensuring complete recovery for every patient.';
 
 export const BOOKING_STATUSES = {
   PENDING: 'pending',
