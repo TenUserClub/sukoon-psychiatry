@@ -21,14 +21,18 @@ export default function DoctorProfile() {
           <ScrollReveal direction="left">
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <div style={{ position: 'relative', display: 'inline-flex' }}>
-                {/* Decorative outer ring */}
+                {/* Decorative offset frame */}
                 <div
                   style={{
                     position: 'absolute',
-                    inset: -12,
-                    borderRadius: '50%',
-                    border: '2px dashed var(--primary-light)',
-                    opacity: 0.3,
+                    top: 24,
+                    left: -24,
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: '1.5rem',
+                    border: '2px solid var(--primary)',
+                    opacity: 0.15,
+                    zIndex: -1,
                   }}
                   aria-hidden="true"
                 />
